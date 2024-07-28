@@ -1,85 +1,17 @@
-# Проект MDN-RNN
+# Project MDN-RNN for cybersecurity 
+# Inspired by - https://github.com/markbrutx/task
 
-## Установка и настройка виртуального окружения
+## Project goal
 
-Для начала работы с проектом необходимо создать и активировать виртуальное окружение, а затем установить все зависимости из файла `requirements.txt`.
+The goal of this project is to develop and train the MDN-RNN (Mixture Density Network - Recurrent Neural Network) model for analyzing the network traffic and indicate the suspicious entries. The inputs are the log files and the ourputs are entries that model label as anomalies.
 
-1. Создайте виртуальное окружение:
-    ```bash
-    python -m venv venv
-    ```
 
-2. Активируйте виртуальное окружение:
+## Result
 
-    - На Windows:
-        ```bash
-        venv\Scripts\activate
-        ```
+The project generates an HTML file containing a full report of the model predictions as well as short recomendations on how that incidents may be avoided in future.
 
-    - На macOS и Linux:
-        ```bash
-        source venv/bin/activate
-        ```
+## Conclusion
 
-3. Установите зависимости:
-    ```bash
-    pip install -r requirements.txt
-    ```
+It is our first project with machine learning so it may not be perfect, but we've tried our best to make it as good as possible.
 
-4. Запустите программу для получения html отчета:
-    ```bash
-    pip python main.py
-    ```
-## Цель проекта
-
-Целью данного проекта является разработка и обучение модели MDN-RNN (Mixture Density Network - Recurrent Neural Network) для прогнозирования инцидентов кибербезопасности и оценки оптимальных стратегий защиты информации. Входные данные представляют собой временные ряды характеристик системы, а выходные данные - вероятности, средние значения и стандартные отклонения для различных сценариев инцидентов.
-
-## Особенности проекта
-
-- **MDNRNNModel**: Основной класс для создания, обучения и предсказания с использованием модели MDN-RNN.
-- **mixture_loss**: Пользовательская функция потерь, используемая для обучения модели.
-- **build_model**: Функция для создания структуры модели с использованием LSTM и MDN слоев.
-- **train**: Метод для обучения модели на данных.
-- **predict**: Метод для предсказания на основе входных данных.
-- **print_data_shapes**: Метод для вывода форм данных.
-- **analyze_predictions**: Метод для анализа предсказаний и вычисления метрик ошибки.
-- **save_predictions_to_html**: Метод для сохранения предсказаний и анализа в HTML файл с графиками и таблицами.
-
-## Для более продвинутых
-
-1. Генерация синтетических данных:
-    ```python
-    x_train = np.random.rand(1000, 20, 15)
-    y_train = np.random.rand(1000, 1)
-    x_test = np.random.rand(100, 20, 15)
-    y_test = np.random.rand(100, 1)
-    ```
-
-2. Создание экземпляра модели:
-    ```python
-    mdn_rnn = MDNRNNModel(input_shape=(None, 15), output_shape=1, num_mixtures=10, lstm_units=100)
-    ```
-
-3. Обучение модели:
-    ```python
-    mdn_rnn.train(x_train, y_train)
-    ```
-
-4. Предсказание и анализ результатов:
-    ```python
-    predictions = mdn_rnn.predict(x_test)
-    analyses, summary = mdn_rnn.analyze_predictions(predictions, y_test)
-    ```
-
-5. Сохранение предсказаний в HTML файл:
-    ```python
-    mdn_rnn.save_predictions_to_html(x_test, y_test, predictions, analyses, summary)
-    ```
-
-## Результат
-
-Проект генерирует HTML файл, содержащий полный отчет о предсказаниях модели, включая графики, таблицы и сводные данные анализа ошибок.
-
-## Заключение
-
-Этот проект позволяет прогнозировать инциденты кибербезопасности с использованием модели MDN-RNN, что помогает заранее оценивать вероятности различных угроз и разрабатывать стратегии для их предотвращения, повышая тем самым безопасность информации и устойчивость системы к потенциальным атакам.
+This project enables the prediction of cybersecurity incidents using the MDN-RNN model, which helps to proactively assess the probabilities of various threats and develop strategies to prevent them, thereby improving information security and system resilience to potential attacks.
